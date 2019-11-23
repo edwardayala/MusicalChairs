@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://World4Player.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://source/fox/fox_cutout_character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/mouse/mouse_character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Repeat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stopper.tscn" type="PackedScene" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="World4" type="Node2D"]
+
+[node name="World4Player" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 630, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="World4Player"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World4Player"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="fox_character" parent="World4Player" instance=ExtResource( 3 )]
+editor/display_folded = true
+
+[node name="animator" parent="World4Player/fox_character" index="0"]
+autoplay = "walk"
+
+[node name="leg_l" parent="World4Player/fox_character/sprites" index="0"]
+position = Vector2( -3.99949, -37.9998 )
+rotation = 0.843535
+
+[node name="leg_r" parent="World4Player/fox_character/sprites" index="1"]
+position = Vector2( -0.000225306, -33.5006 )
+rotation = -1.26165
+
+[node name="body" parent="World4Player/fox_character/sprites" index="2"]
+position = Vector2( 4.39924e-07, -35.4697 )
+
+[node name="head" parent="World4Player/fox_character/sprites/body" index="0"]
+rotation = -0.299837
+
+[node name="arm_l" parent="World4Player/fox_character/sprites/body" index="1"]
+position = Vector2( 1.31188, -37.5526 )
+rotation = -1.43505
+
+[node name="arm_r" parent="World4Player/fox_character/sprites/body" index="2"]
+position = Vector2( -9.27577, -42.2628 )
+rotation = 0.846768
+
+[node name="tail" parent="World4Player/fox_character/sprites/body" index="3"]
+rotation = -0.234158
+
+[node name="NPC" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 750, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="NPC"]
+visible = false
+modulate = Color( 0.101961, 0.803922, 0.0392157, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="mouse_character" parent="NPC" instance=ExtResource( 4 )]
+
+[node name="Floors" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="Repeat" parent="Floors" instance=ExtResource( 5 )]
+position = Vector2( 870, 200 )
+
+[node name="Stopper" parent="Floors" instance=ExtResource( 6 )]
+position = Vector2( 810, 270 )
+
+[node name="Stopper2" parent="Floors" instance=ExtResource( 6 )]
+position = Vector2( 690, 270 )
+
+[editable path="World4Player/fox_character"]

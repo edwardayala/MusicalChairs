@@ -1,0 +1,91 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://source/cutout_character.gd" type="Script" id=1]
+[ext_resource path="res://source/ox/animations/setup.tres" type="Animation" id=2]
+[ext_resource path="res://source/ox/animations/dash.tres" type="Animation" id=3]
+[ext_resource path="res://source/ox/animations/fall.tres" type="Animation" id=4]
+[ext_resource path="res://source/ox/animations/idle.tres" type="Animation" id=5]
+[ext_resource path="res://source/ox/animations/jump.tres" type="Animation" id=6]
+[ext_resource path="res://source/ox/animations/walk.tres" type="Animation" id=7]
+[ext_resource path="res://source/ox/animations/wall.tres" type="Animation" id=8]
+[ext_resource path="res://source/ox/ox_body_sprites.png" type="Texture" id=9]
+[ext_resource path="res://source/ox/ox_face_sprites.png" type="Texture" id=10]
+
+[node name="ox_character" type="Position2D"]
+script = ExtResource( 1 )
+
+[node name="animator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprites")
+autoplay = "walk"
+playback_default_blend_time = 0.08
+anims/SETUP = ExtResource( 2 )
+anims/dash = ExtResource( 3 )
+anims/fall = ExtResource( 4 )
+anims/idle = ExtResource( 5 )
+anims/jump = ExtResource( 6 )
+anims/walk = ExtResource( 7 )
+anims/wall = ExtResource( 8 )
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="body" type="Sprite" parent="sprites"]
+position = Vector2( 3.62958, -26.9629 )
+rotation = 0.211836
+texture = ExtResource( 9 )
+offset = Vector2( 2.39258, -46.2841 )
+region_enabled = true
+region_rect = Rect2( 1, 64, 101, 107 )
+
+[node name="head" type="Sprite" parent="sprites/body"]
+position = Vector2( 3.4465, -76.7579 )
+rotation = -0.110547
+texture = ExtResource( 10 )
+offset = Vector2( 27.3104, -45.2847 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 128, 112 )
+region_filter_clip = true
+
+[node name="arm_l" type="Sprite" parent="sprites/body"]
+position = Vector2( -38.7962, -40.5009 )
+rotation = 2.59427
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 12.9859, 4.10221 )
+region_enabled = true
+region_rect = Rect2( 192, 154, 38, 38 )
+
+[node name="arm_r" type="Sprite" parent="sprites/body"]
+position = Vector2( 40.0991, -38.308 )
+rotation = 2.8501
+texture = ExtResource( 9 )
+offset = Vector2( -7.61963, 3.01789 )
+region_enabled = true
+region_rect = Rect2( 128, 154, 38, 38 )
+
+[node name="tail" type="Sprite" parent="sprites/body"]
+show_behind_parent = true
+position = Vector2( -37.221, -7.38097 )
+rotation = -0.356819
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( -16.514, -29.0504 )
+region_enabled = true
+region_rect = Rect2( 128, 67, 64, 61 )
+
+[node name="leg_l" type="Sprite" parent="sprites"]
+position = Vector2( 32.1681, -43.375 )
+rotation = -1.03612
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 0, 18 )
+region_enabled = true
+region_rect = Rect2( 64, 200, 31, 56 )
+
+[node name="leg_r" type="Sprite" parent="sprites"]
+position = Vector2( -13.8779, -47.7052 )
+rotation = 1.06966
+z_index = -1
+texture = ExtResource( 9 )
+offset = Vector2( 0, 20 )
+region_enabled = true
+region_rect = Rect2( 1, 200, 31, 56 )

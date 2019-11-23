@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://source/cutout_character.gd" type="Script" id=1]
+[ext_resource path="res://source/alpaca/animations/setup.tres" type="Animation" id=2]
+[ext_resource path="res://source/alpaca/animations/dash.tres" type="Animation" id=3]
+[ext_resource path="res://source/alpaca/animations/fall.tres" type="Animation" id=4]
+[ext_resource path="res://source/alpaca/animations/idle.tres" type="Animation" id=5]
+[ext_resource path="res://source/alpaca/animations/jump.tres" type="Animation" id=6]
+[ext_resource path="res://source/alpaca/animations/walk.tres" type="Animation" id=7]
+[ext_resource path="res://source/alpaca/alpaca_body_sprites.png" type="Texture" id=8]
+[ext_resource path="res://source/alpaca/alpaca_face_sprites.png" type="Texture" id=9]
+
+[node name="alpaca_character" type="Position2D"]
+script = ExtResource( 1 )
+
+[node name="animator" type="AnimationPlayer" parent="."]
+root_node = NodePath("../sprites")
+autoplay = "walk"
+playback_default_blend_time = 0.08
+anims/SETUP = ExtResource( 2 )
+anims/dash = ExtResource( 3 )
+anims/fall = ExtResource( 4 )
+anims/idle = ExtResource( 5 )
+anims/jump = ExtResource( 6 )
+anims/walk = ExtResource( 7 )
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="leg_l" type="Sprite" parent="sprites"]
+position = Vector2( -18.5921, -47.2926 )
+rotation = -0.57736
+texture = ExtResource( 8 )
+offset = Vector2( 0, 19 )
+region_enabled = true
+region_rect = Rect2( 64, 201, 16, 55 )
+
+[node name="leg_r" type="Sprite" parent="sprites"]
+position = Vector2( -31.279, -45.2994 )
+rotation = -0.653437
+texture = ExtResource( 8 )
+offset = Vector2( 0, 19 )
+region_enabled = true
+region_rect = Rect2( 1, 201, 16, 55 )
+
+[node name="body" type="Sprite" parent="sprites"]
+position = Vector2( -29.3333, -39.2058 )
+rotation = -0.0327699
+texture = ExtResource( 8 )
+offset = Vector2( 29.3333, -11.3333 )
+region_enabled = true
+region_rect = Rect2( 1, 64, 104, 63 )
+
+[node name="arm_l" type="Sprite" parent="sprites/body"]
+show_behind_parent = true
+position = Vector2( 61.6741, -9.37179 )
+rotation = 0.434997
+texture = ExtResource( 8 )
+offset = Vector2( 0, 19 )
+region_enabled = true
+region_rect = Rect2( 64, 201, 16, 55 )
+
+[node name="arm_r" type="Sprite" parent="sprites/body"]
+show_behind_parent = true
+position = Vector2( 65.1027, -5.48124 )
+rotation = 0.677672
+texture = ExtResource( 8 )
+offset = Vector2( 0, 19 )
+region_enabled = true
+region_rect = Rect2( 1, 201, 16, 55 )
+
+[node name="neck" type="Sprite" parent="sprites/body"]
+position = Vector2( 64, -12.6667 )
+rotation = 0.0864129
+texture = ExtResource( 8 )
+offset = Vector2( 0, -42.6667 )
+region_enabled = true
+region_rect = Rect2( 128, 131, 31, 125 )
+
+[node name="head" type="Sprite" parent="sprites/body/neck"]
+position = Vector2( 4.66667, -88.6667 )
+rotation = -0.0618947
+texture = ExtResource( 9 )
+offset = Vector2( 11.3333, -13.3334 )
+region_enabled = true
+region_rect = Rect2( 1, 66, 76, 62 )
+
+[node name="tail" type="Sprite" parent="sprites/body"]
+position = Vector2( -20, -12.6667 )
+rotation = -0.0448297
+texture = ExtResource( 8 )
+offset = Vector2( -5.33333, -7.33333 )
+region_enabled = true
+region_rect = Rect2( 128, 99, 31, 29 )

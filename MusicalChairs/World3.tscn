@@ -1,0 +1,216 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://PlayerWorld3.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://source/fox/fox_cutout_character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/goat/goat_character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://source/mouse/mouse_character.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Repeat.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Stopper.tscn" type="PackedScene" id=7]
+[ext_resource path="res://World3Chair.gd" type="Script" id=8]
+[ext_resource path="res://Icons/chair.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
+
+[node name="World3" type="Node2D"]
+
+[node name="PlayerWorld3" type="KinematicBody2D" parent="."]
+editor/display_folded = true
+position = Vector2( 510, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="PlayerWorld3"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerWorld3"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="fox_character" parent="PlayerWorld3" instance=ExtResource( 3 )]
+editor/display_folded = true
+
+[node name="animator" parent="PlayerWorld3/fox_character" index="0"]
+autoplay = "walk"
+
+[node name="leg_l" parent="PlayerWorld3/fox_character/sprites" index="0"]
+position = Vector2( 0.419569, -36.0357 )
+rotation = -0.970757
+
+[node name="leg_r" parent="PlayerWorld3/fox_character/sprites" index="1"]
+position = Vector2( -1.96425, -38.9017 )
+rotation = 0.814385
+
+[node name="body" parent="PlayerWorld3/fox_character/sprites" index="2"]
+position = Vector2( 1.30107e-06, -31.0154 )
+
+[node name="head" parent="PlayerWorld3/fox_character/sprites/body" index="0"]
+rotation = -0.136971
+
+[node name="arm_l" parent="PlayerWorld3/fox_character/sprites/body" index="1"]
+position = Vector2( -8.35014, -39.0879 )
+rotation = 0.76722
+
+[node name="arm_r" parent="PlayerWorld3/fox_character/sprites/body" index="2"]
+position = Vector2( -13.9647, -37.0942 )
+rotation = -1.21528
+
+[node name="tail" parent="PlayerWorld3/fox_character/sprites/body" index="3"]
+rotation = 0.129581
+
+[node name="NPCs" type="Node" parent="."]
+
+[node name="NPC" type="KinematicBody2D" parent="NPCs"]
+editor/display_folded = true
+position = Vector2( 630, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="NPCs/NPC"]
+visible = false
+modulate = Color( 0.101961, 0.803922, 0.0392157, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/NPC"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="goat_character" parent="NPCs/NPC" instance=ExtResource( 4 )]
+editor/display_folded = true
+
+[node name="animator" parent="NPCs/NPC/goat_character" index="0"]
+autoplay = "walk"
+
+[node name="body" parent="NPCs/NPC/goat_character/sprites" index="0"]
+rotation = 0.363489
+
+[node name="arm_l" parent="NPCs/NPC/goat_character/sprites/body" index="1"]
+position = Vector2( 4.21175, -26.5744 )
+rotation = 0.377755
+
+[node name="arm_r" parent="NPCs/NPC/goat_character/sprites/body" index="2"]
+position = Vector2( -4.95731, -28.5946 )
+rotation = -0.510345
+
+[node name="tail" parent="NPCs/NPC/goat_character/sprites/body" index="3"]
+rotation = 0.103505
+
+[node name="leg_l" parent="NPCs/NPC/goat_character/sprites" index="1"]
+position = Vector2( 0.847854, -34.4545 )
+rotation = -0.247589
+
+[node name="leg_r" parent="NPCs/NPC/goat_character/sprites" index="2"]
+position = Vector2( -0.0596218, -35.6667 )
+rotation = 0.232092
+
+[node name="NPC2" type="KinematicBody2D" parent="NPCs"]
+editor/display_folded = true
+position = Vector2( 750, 200 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="NPCs/NPC2"]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCs/NPC2"]
+visible = false
+shape = SubResource( 1 )
+
+[node name="mouse_character" parent="NPCs/NPC2" instance=ExtResource( 5 )]
+editor/display_folded = true
+
+[node name="body" parent="NPCs/NPC2/mouse_character/sprites" index="0"]
+rotation = 0.136059
+
+[node name="head" parent="NPCs/NPC2/mouse_character/sprites/body" index="0"]
+rotation = -0.151098
+
+[node name="arm_l" parent="NPCs/NPC2/mouse_character/sprites/body" index="1"]
+rotation = -0.910288
+
+[node name="arm_r" parent="NPCs/NPC2/mouse_character/sprites/body" index="2"]
+rotation = 0.780043
+
+[node name="tail" parent="NPCs/NPC2/mouse_character/sprites/body" index="3"]
+rotation = -0.187179
+
+[node name="leg_l" parent="NPCs/NPC2/mouse_character/sprites" index="1"]
+position = Vector2( 7.87942, -19.9688 )
+rotation = 0.120911
+
+[node name="leg_r" parent="NPCs/NPC2/mouse_character/sprites" index="2"]
+position = Vector2( -0.000457764, -19.2849 )
+rotation = 0.3139
+
+[node name="Floors" type="Node" parent="."]
+editor/display_folded = true
+
+[node name="Repeat" parent="Floors" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 870, 200 )
+
+[node name="Stopper" parent="Floors" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 810, 270 )
+
+[node name="Stopper3" parent="Floors" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 570, 270 )
+
+[node name="Stopper2" parent="Floors" instance=ExtResource( 7 )]
+visible = false
+position = Vector2( 690, 270 )
+
+[node name="Chairs" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="World3Chair" type="Area2D" parent="Chairs"]
+editor/display_folded = true
+position = Vector2( 750, 270 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Chairs/World3Chair"]
+modulate = Color( 0.839216, 0.0705882, 0.737255, 1 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chairs/World3Chair"]
+visible = false
+shape = SubResource( 2 )
+
+[node name="World3Chair2" type="Area2D" parent="Chairs"]
+position = Vector2( 630, 270 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Chairs/World3Chair2"]
+modulate = Color( 0.839216, 0.0705882, 0.737255, 1 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Chairs/World3Chair2"]
+visible = false
+shape = SubResource( 2 )
+
+[editable path="PlayerWorld3/fox_character"]
+
+[editable path="NPCs/NPC/goat_character"]
+
+[editable path="NPCs/NPC2/mouse_character"]

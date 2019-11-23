@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://NPC.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://source/goat/goat_character.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 30 )
+
+[node name="NPC" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.0404389, 0.441406, 0.0172424, 1 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="goat_character" parent="." instance=ExtResource( 3 )]
+
+[node name="animator" parent="goat_character" index="0"]
+autoplay = "walk"
+
+[node name="body" parent="goat_character/sprites" index="0"]
+rotation = 0.487083
+
+[node name="arm_l" parent="goat_character/sprites/body" index="1"]
+position = Vector2( 11.6667, -28.6667 )
+rotation = -0.555427
+
+[node name="arm_r" parent="goat_character/sprites/body" index="2"]
+position = Vector2( -11.6667, -35.3333 )
+rotation = 0.774853
+
+[node name="tail" parent="goat_character/sprites/body" index="3"]
+rotation = 0.00357679
+
+[node name="leg_l" parent="goat_character/sprites" index="1"]
+position = Vector2( 4.66667, -34.6667 )
+rotation = 0.869165
+
+[node name="leg_r" parent="goat_character/sprites" index="2"]
+position = Vector2( -6, -35.6667 )
+rotation = -0.862587
+
+[editable path="goat_character"]
