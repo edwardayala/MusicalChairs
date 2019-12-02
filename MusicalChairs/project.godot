@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Musical Chairs"
 run/main_scene="res://TitleScreen/TitleScreen.tscn"
+boot_splash/image="res://TitleScreen/Splash.png"
 config/icon="res://icon.png"
 
 [display]
@@ -26,7 +27,6 @@ window/size/height=720
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 environment/default_clear_color=Color( 0.14902, 0.192157, 0.219608, 1 )
 environment/default_environment="res://default_env.tres"
